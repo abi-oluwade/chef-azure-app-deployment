@@ -12,7 +12,7 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-18.04
+  - name: ubuntu-18.04-app-test
     driver:
       image_urn: Canonical:UbuntuServer:18.04-LTS:latest
       vm_name: trusty-vm
@@ -23,5 +23,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[nodejsapp-db-chef-azure::default]
+      - recipe[nodejs-azure::default]
     attributes:

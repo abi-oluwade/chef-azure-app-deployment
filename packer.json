@@ -1,0 +1,33 @@
+{
+  "builders": [{
+    "type": "azure-arm",
+
+    "client_id": "326d11b7-bcba-49ce-9ef3-a2dca6dece2c",
+    "client_secret": "89a5f65a-a4f6-4c8d-81e7-0a88811f9727",
+    "tenant_id": "19a87ecf-9a85-4a0c-847d-c0c94218f7b7",
+    "subscription_id": "09edf981-c9ab-45f8-9d0f-de3b3e2769de",
+
+    "managed_image_resource_group_name": "kitchen-default-ubuntu-1804-app-test-20200216T035130",
+    "managed_image_name": "myPackerImage",
+
+    "os_type": "Linux",
+    "image_publisher": "Canonical",
+    "image_offer": "UbuntuServer",
+    "image_sku": "18.04-LTS",
+
+    "azure_tags": {
+        "dept": "Engineering",
+        "task": "Image deployment"
+    },
+
+    "location": "UK South",
+    "vm_size": "Standard_DS2_v2"
+  }],
+  "provisioners": [
+      {
+    "type": "chef-solo",
+    "cookbook_paths": ["./berks-cookbooks"],
+    "run_list": ["nodejs-azure::default"]
+  }
+]
+}
