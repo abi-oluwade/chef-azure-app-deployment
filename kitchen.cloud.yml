@@ -1,0 +1,27 @@
+---
+driver:
+  name: azurerm
+  subscription_id: '09edf981-c9ab-45f8-9d0f-de3b3e2769de'
+  location: 'UK South'
+  machine_size: 'Standard_D2s_v3'
+
+transport:
+  ssh_key: ~/.ssh/id_rsa
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-18.04
+    driver:
+      image_urn: Canonical:UbuntuServer:18.04-LTS:latest
+      vm_name: trusty-vm
+      vm_tags:
+        ostype: linux
+        distro: ubuntu
+
+suites:
+  - name: default
+    run_list:
+      - recipe[nodejsapp-db-chef-azure::default]
+    attributes:
